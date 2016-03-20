@@ -12,6 +12,10 @@
 		51AFED431C9E4BAE00AF6670 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 51AFED411C9E4BAE00AF6670 /* Main.storyboard */; };
 		51AFED451C9E4BAE00AF6670 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 51AFED441C9E4BAE00AF6670 /* Assets.xcassets */; };
 		51AFED481C9E4BAE00AF6670 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 51AFED461C9E4BAE00AF6670 /* LaunchScreen.storyboard */; };
+		51AFED501C9F29D500AF6670 /* JSZBrowserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51AFED4F1C9F29D500AF6670 /* JSZBrowserViewController.swift */; };
+		51AFED521C9F2A5000AF6670 /* JSZBrowserNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51AFED511C9F2A5000AF6670 /* JSZBrowserNavigationBar.swift */; };
+		51AFED541C9F2A6800AF6670 /* JSZBrowserToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51AFED531C9F2A6800AF6670 /* JSZBrowserToolbar.swift */; };
+		51AFED561C9F2AAA00AF6670 /* JSZWebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51AFED551C9F2AAA00AF6670 /* JSZWebView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +26,10 @@
 		51AFED441C9E4BAE00AF6670 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		51AFED471C9E4BAE00AF6670 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		51AFED491C9E4BAE00AF6670 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		51AFED4F1C9F29D500AF6670 /* JSZBrowserViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSZBrowserViewController.swift; sourceTree = "<group>"; };
+		51AFED511C9F2A5000AF6670 /* JSZBrowserNavigationBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSZBrowserNavigationBar.swift; sourceTree = "<group>"; };
+		51AFED531C9F2A6800AF6670 /* JSZBrowserToolbar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSZBrowserToolbar.swift; sourceTree = "<group>"; };
+		51AFED551C9F2AAA00AF6670 /* JSZWebView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSZWebView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +64,10 @@
 			children = (
 				51AFED3D1C9E4BAE00AF6670 /* AppDelegate.swift */,
 				51AFED3F1C9E4BAE00AF6670 /* ViewController.swift */,
+				51AFED4F1C9F29D500AF6670 /* JSZBrowserViewController.swift */,
+				51AFED511C9F2A5000AF6670 /* JSZBrowserNavigationBar.swift */,
+				51AFED531C9F2A6800AF6670 /* JSZBrowserToolbar.swift */,
+				51AFED551C9F2AAA00AF6670 /* JSZWebView.swift */,
 				51AFED411C9E4BAE00AF6670 /* Main.storyboard */,
 				51AFED441C9E4BAE00AF6670 /* Assets.xcassets */,
 				51AFED461C9E4BAE00AF6670 /* LaunchScreen.storyboard */,
@@ -135,8 +147,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				51AFED521C9F2A5000AF6670 /* JSZBrowserNavigationBar.swift in Sources */,
 				51AFED401C9E4BAE00AF6670 /* ViewController.swift in Sources */,
+				51AFED541C9F2A6800AF6670 /* JSZBrowserToolbar.swift in Sources */,
+				51AFED561C9F2AAA00AF6670 /* JSZWebView.swift in Sources */,
 				51AFED3E1C9E4BAE00AF6670 /* AppDelegate.swift in Sources */,
+				51AFED501C9F29D500AF6670 /* JSZBrowserViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

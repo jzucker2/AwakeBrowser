@@ -12,8 +12,6 @@ import WebKit
 class ViewController: UIViewController, UITextFieldDelegate, WKNavigationDelegate {
 
     var webView: WKWebView
-//    @IBOutlet weak var barView: UIView!
-//    @IBOutlet weak var barView: UINavigationBar!
     var navigationBar: UINavigationBar!
     var urlField: UITextField!
     
@@ -37,10 +35,7 @@ class ViewController: UIViewController, UITextFieldDelegate, WKNavigationDelegat
         // Do any additional setup after loading the view, typically from a nib.
         urlField.delegate = self
         urlField.borderStyle = .Line
-//        barView.translatesAutoresizingMaskIntoConstraints = false
         
-        
-//        barView.frame = CGRect(x:0, y: 0, width: view.frame.width, height: 30)
         view.insertSubview(navigationBar, aboveSubview: webView)
         view.insertSubview(webView, belowSubview: progressView)
         navigationBar.addSubview(urlField)

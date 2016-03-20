@@ -5,10 +5,10 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Browser View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="AwakeBrowser" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="JSZBrowserViewController" customModule="AwakeBrowser" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -16,41 +16,8 @@
                     <view key="view" contentMode="scaleToFill" id="mVZ-ob-l2S">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nxM-kD-mNt">
-                                <rect key="frame" x="0.0" y="556" width="600" height="44"/>
-                                <items>
-                                    <barButtonItem title="&lt;" id="pQe-MQ-W0z">
-                                        <connections>
-                                            <action selector="back:" destination="BYZ-38-t0r" id="6rX-ll-EhX"/>
-                                        </connections>
-                                    </barButtonItem>
-                                    <barButtonItem width="42" style="plain" systemItem="fixedSpace" id="Jwa-x5-GVr"/>
-                                    <barButtonItem title="&gt;" id="FGB-tJ-Ug0">
-                                        <connections>
-                                            <action selector="forward:" destination="BYZ-38-t0r" id="6FO-uC-62a"/>
-                                        </connections>
-                                    </barButtonItem>
-                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="kVX-Mh-vJg"/>
-                                    <barButtonItem title="R" id="gOi-lh-8qI">
-                                        <connections>
-                                            <action selector="reload:" destination="BYZ-38-t0r" id="Sva-Ow-adI"/>
-                                        </connections>
-                                    </barButtonItem>
-                                </items>
-                            </toolbar>
-                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" fixedFrame="YES" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="ay1-Tp-MEG">
-                                <rect key="frame" x="-4" y="0.0" width="608" height="2"/>
-                            </progressView>
-                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <connections>
-                        <outlet property="backButton" destination="pQe-MQ-W0z" id="z2g-zr-j0P"/>
-                        <outlet property="forwardButton" destination="FGB-tJ-Ug0" id="mNB-ee-bZx"/>
-                        <outlet property="progressView" destination="ay1-Tp-MEG" id="f0N-ZH-cv3"/>
-                        <outlet property="reloadButton" destination="gOi-lh-8qI" id="FgS-ty-5ko"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
