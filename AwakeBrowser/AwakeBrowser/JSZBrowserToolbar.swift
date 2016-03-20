@@ -28,6 +28,7 @@ class JSZBrowserToolbar: UIView, UITextFieldDelegate {
     var awakeSwitch: UISwitch!
     var rightButton: UIButton!
     var navigationState = JSZBrowserNavigationState.NotLoading
+    var shareButton: UIButton!
 
     weak var delegate: JSZBrowserToolbarDelegate?
     
@@ -44,11 +45,14 @@ class JSZBrowserToolbar: UIView, UITextFieldDelegate {
         self.backButton.setTitle("B", forState: .Normal)
         self.awakeSwitch = UISwitch()
         self.rightButton = UIButton(type: .System)
+        self.shareButton = UIButton(type: .System)
+        self.shareButton.setTitle("S", forState: .Normal)
         super.init(frame: frame)
         self.addSubview(inputField)
         self.addSubview(forwardButton)
         self.addSubview(backButton)
         self.addSubview(awakeSwitch)
+        self.addSubview(shareButton)
         inputField.rightViewMode = .UnlessEditing
         inputField.rightView = rightButton
         
@@ -58,6 +62,7 @@ class JSZBrowserToolbar: UIView, UITextFieldDelegate {
         backButton.addTarget(self, action: "didTapBackButton:", forControlEvents: .TouchUpInside)
         forwardButton.addTarget(self, action: "didTapForwardButton:", forControlEvents: .TouchUpInside)
         rightButton.addTarget(self, action: "didTapRightButton:", forControlEvents: .TouchUpInside)
+        shareButton.addTarget(self, action: "didTapShareButton:", forControlEvents: .TouchUpInside)
         applyLayoutConstraints()
     }
     
@@ -70,20 +75,24 @@ class JSZBrowserToolbar: UIView, UITextFieldDelegate {
         forwardButton.translatesAutoresizingMaskIntoConstraints = false
         backButton.translatesAutoresizingMaskIntoConstraints = false
         awakeSwitch.translatesAutoresizingMaskIntoConstraints = false
-        let views = ["inputField": inputField, "forwardButton": forwardButton, "backButton": backButton, "awakeSwitch": awakeSwitch]
+        shareButton.translatesAutoresizingMaskIntoConstraints = false
+        let views = ["inputField": inputField, "forwardButton": forwardButton, "backButton": backButton, "awakeSwitch": awakeSwitch, "shareButton": shareButton]
         let metrics = ["inputFieldTopPadding": 5.0, "inputFieldBottomPadding": 5.0, "inputFieldLeftPadding": 5.0, "inputFieldRightPadding": 5.0, "navigationButtonsWidth": 10.0, "navigationButtonsHeight": 20.0, "navigationButtonsTopPadding": 10.0]
-        let inputFieldHorizontalConstraints = NSLayoutConstraint.constraintsWithVisualFormat("H:|-5-[backButton(navigationButtonsWidth)]-2-[forwardButton(navigationButtonsWidth)]-inputFieldLeftPadding-[inputField]-inputFieldRightPadding-[awakeSwitch]-5-|", options: [], metrics: metrics, views: views)
+        let inputFieldHorizontalConstraints = NSLayoutConstraint.constraintsWithVisualFormat("H:|-5-[backButton(navigationButtonsWidth)]-2-[forwardButton(navigationButtonsWidth)]-inputFieldLeftPadding-[inputField]-inputFieldRightPadding-[shareButton(10)]-5-[awakeSwitch]-5-|", options: [], metrics: metrics, views: views)
         let inputFieldVerticalConstraints = NSLayoutConstraint.constraintsWithVisualFormat("V:|-inputFieldTopPadding-[inputField]-inputFieldBottomPadding-|", options: [], metrics: metrics, views: views)
         let forwardButtonVerticalConstraint = NSLayoutConstraint(item: forwardButton, attribute: .Height, relatedBy: .Equal, toItem: self, attribute: .Height, multiplier: 0.5, constant: 0.0)
         let backButtonVerticalConstraint = NSLayoutConstraint(item: backButton, attribute: .Height, relatedBy: .Equal, toItem: self, attribute: .Height, multiplier: 0.5, constant: 0.0)
         let forwardButtonVerticalCenterConstraints = NSLayoutConstraint(item: forwardButton, attribute: .CenterY, relatedBy: .Equal, toItem: self, attribute: .CenterY, multiplier: 1.0, constant: 0.0)
         let backButtonVerticalCenterConstraints = NSLayoutConstraint(item: backButton, attribute: .CenterY, relatedBy: .Equal, toItem: self, attribute: .CenterY, multiplier: 1.0, constant: 0.0)
         let awakeSwitchVerticalCenterConstraint = NSLayoutConstraint(item: awakeSwitch, attribute: .CenterY, relatedBy: .Equal, toItem: self, attribute: .CenterY, multiplier: 1.0, constant: 0.0)
+        let shareButtonVerticalCenterConstraint = NSLayoutConstraint(item: shareButton, attribute: .CenterY, relatedBy: .Equal, toItem: self, attribute: .CenterY, multiplier: 1.0, constant: 0.0)
+        let shareButtonVerticalConstraint = NSLayoutConstraint(item: shareButton, attribute: .Height, relatedBy: .Equal, toItem: self, attribute: .Height, multiplier: 0.5, constant: 0.0)
         self.addConstraints(inputFieldHorizontalConstraints)
         self.addConstraints(inputFieldVerticalConstraints)
         self.addConstraints([forwardButtonVerticalConstraint, backButtonVerticalConstraint])
         self.addConstraints([forwardButtonVerticalCenterConstraints, backButtonVerticalCenterConstraints])
         self.addConstraint(awakeSwitchVerticalCenterConstraint)
+        self.addConstraints([shareButtonVerticalConstraint, shareButtonVerticalCenterConstraint])
     }
     
     func textFieldShouldReturn(textField: UITextField) -> Bool {
@@ -148,6 +157,18 @@ class JSZBrowserToolbar: UIView, UITextFieldDelegate {
         delegate?.toolbarDidReceiveNavigationAction(.Back)
     }
     
+    func didTapShareButton(sender: UIButton) {
+        delegate?.toolbarDidTapShareButton(inputField.text)
+    }
+    
+    func updateTextFieldWithURL(URL: NSURL?) {
+        if let aURL = URL {
+            inputField.text = aURL.absoluteString
+        } else {
+            inputField.text = ""
+        }
+    }
+    
     func didTapRightButton(sender: UIButton) {
         switch navigationState {
         case .NotLoading:
@@ -162,4 +183,5 @@ protocol JSZBrowserToolbarDelegate: class {
     func toolbarDidReturnWithText(text: String?)
     func toolbarDidReceiveNavigationAction(action: JSZBrowserNavigationItem)
     func toolbarAwakeSwitchValueChanged(awakeSwitchValue: Bool)
+    func toolbarDidTapShareButton(urlString: String?)
 }

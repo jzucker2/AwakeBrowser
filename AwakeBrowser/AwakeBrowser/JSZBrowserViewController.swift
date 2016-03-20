@@ -74,6 +74,11 @@ class JSZBrowserViewController: UIViewController, WKNavigationDelegate, JSZBrows
         UIApplication.sharedApplication().idleTimerDisabled = awakeSwitchValue
     }
     
+    func toolbarDidTapShareButton(urlString: String?) {
+        print("share")
+        //        let activityViewController =
+    }
+    
     func toolbarDidReceiveNavigationAction(action: JSZBrowserNavigationItem) {
         switch action {
         case .Back:
@@ -115,6 +120,7 @@ class JSZBrowserViewController: UIViewController, WKNavigationDelegate, JSZBrows
     
     func webView(webView: WKWebView, didFinishNavigation navigation: WKNavigation!) {
         progressView.setProgress(0.0, animated: false)
+        toolbar.updateTextFieldWithURL(webView.URL)
     }
 
 }
