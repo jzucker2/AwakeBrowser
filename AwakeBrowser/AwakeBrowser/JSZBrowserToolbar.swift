@@ -57,12 +57,13 @@ class JSZBrowserToolbar: UIView, UITextFieldDelegate {
         inputField.rightView = rightButton
         
         inputField.delegate = self
-        self.backgroundColor = UIColor.greenColor()
-        awakeSwitch.addTarget(self, action: "awakeSwitchValueChanged:", forControlEvents: .ValueChanged)
-        backButton.addTarget(self, action: "didTapBackButton:", forControlEvents: .TouchUpInside)
-        forwardButton.addTarget(self, action: "didTapForwardButton:", forControlEvents: .TouchUpInside)
-        rightButton.addTarget(self, action: "didTapRightButton:", forControlEvents: .TouchUpInside)
-        shareButton.addTarget(self, action: "didTapShareButton:", forControlEvents: .TouchUpInside)
+//        self.backgroundColor = UIColor.greenColor()
+        self.backgroundColor = UIColor.purpleColor();
+        awakeSwitch.addTarget(self, action: #selector(JSZBrowserToolbar.awakeSwitchValueChanged(_:)), forControlEvents: .ValueChanged)
+        backButton.addTarget(self, action: #selector(JSZBrowserToolbar.didTapBackButton(_:)), forControlEvents: .TouchUpInside)
+        forwardButton.addTarget(self, action: #selector(JSZBrowserToolbar.didTapForwardButton(_:)), forControlEvents: .TouchUpInside)
+        rightButton.addTarget(self, action: #selector(JSZBrowserToolbar.didTapRightButton(_:)), forControlEvents: .TouchUpInside)
+        shareButton.addTarget(self, action: #selector(JSZBrowserToolbar.didTapShareButton(_:)), forControlEvents: .TouchUpInside)
         applyLayoutConstraints()
     }
     
