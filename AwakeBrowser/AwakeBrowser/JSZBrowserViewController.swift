@@ -89,6 +89,16 @@ class JSZBrowserViewController: UIViewController, WKNavigationDelegate, JSZBrows
             webView.reload()
         case .Cancel:
             webView.stopLoading()
+        case .BackHistory:
+            print(action.rawValue)
+//            if let backItem = webView.backForwardList.backItem {
+//                webView.goToBackForwardListItem(backItem)
+//            }
+        case .ForwardHistory:
+            print(action.rawValue)
+//            if let forwardItem = webView.backForwardList.forwardItem {
+//                webView.goToBackForwardListItem(forwardItem)
+//            }
         }
     }
     

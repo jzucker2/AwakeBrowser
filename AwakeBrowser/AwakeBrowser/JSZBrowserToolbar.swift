@@ -13,6 +13,8 @@ enum JSZBrowserNavigationItem: String {
     case Back
     case Forward
     case Cancel
+    case BackHistory
+    case ForwardHistory
 }
 
 enum JSZBrowserNavigationState: String {
@@ -57,6 +59,8 @@ class JSZBrowserToolbar: UIView, UITextFieldDelegate {
         inputField.rightView = rightButton
         
         inputField.delegate = self
+        inputField.autoresizingMask = .None
+        inputField.adjustsFontSizeToFitWidth = false
 //        self.backgroundColor = UIColor.greenColor()
         self.backgroundColor = UIColor.purpleColor();
         awakeSwitch.addTarget(self, action: #selector(JSZBrowserToolbar.awakeSwitchValueChanged(_:)), forControlEvents: .ValueChanged)
@@ -64,6 +68,8 @@ class JSZBrowserToolbar: UIView, UITextFieldDelegate {
         forwardButton.addTarget(self, action: #selector(JSZBrowserToolbar.didTapForwardButton(_:)), forControlEvents: .TouchUpInside)
         rightButton.addTarget(self, action: #selector(JSZBrowserToolbar.didTapRightButton(_:)), forControlEvents: .TouchUpInside)
         shareButton.addTarget(self, action: #selector(JSZBrowserToolbar.didTapShareButton(_:)), forControlEvents: .TouchUpInside)
+        backButton.addGestureRecognizer(UILongPressGestureRecognizer(target: self, action: #selector(JSZBrowserToolbar.didLongPressNavigationButton(_:))))
+        forwardButton.addGestureRecognizer(UILongPressGestureRecognizer(target: self, action: #selector(JSZBrowserToolbar.didLongPressNavigationButton(_:))))
         applyLayoutConstraints()
     }
     
@@ -176,6 +182,24 @@ class JSZBrowserToolbar: UIView, UITextFieldDelegate {
             delegate?.toolbarDidReceiveNavigationAction(.Reload)
         case .Loading:
             delegate?.toolbarDidReceiveNavigationAction(.Cancel)
+        }
+    }
+    
+//    func didLongPressBackButton(recognizer: UITapGestureRecognizer) {
+//        delegate?.toolbarDidReceiveNavigationAction(.BackHistory)
+//    }
+    
+    func didLongPressNavigationButton(recognizer: UITapGestureRecognizer) {
+        var longPressItem: JSZBrowserNavigationItem?
+        if let button = recognizer.view as? UIButton {
+            if button == backButton {
+                longPressItem = .BackHistory
+            } else if button == forwardButton {
+                longPressItem = .ForwardHistory
+            }
+        }
+        if let item = longPressItem {
+            delegate?.toolbarDidReceiveNavigationAction(item)
         }
     }
 }
