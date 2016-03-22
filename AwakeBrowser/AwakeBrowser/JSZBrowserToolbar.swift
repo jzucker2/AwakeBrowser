@@ -61,7 +61,6 @@ class JSZBrowserToolbar: UIView, UITextFieldDelegate {
         inputField.delegate = self
         inputField.autoresizingMask = .None
         inputField.adjustsFontSizeToFitWidth = false
-//        self.backgroundColor = UIColor.greenColor()
         self.backgroundColor = UIColor.purpleColor();
         awakeSwitch.addTarget(self, action: #selector(JSZBrowserToolbar.awakeSwitchValueChanged(_:)), forControlEvents: .ValueChanged)
         backButton.addTarget(self, action: #selector(JSZBrowserToolbar.didTapBackButton(_:)), forControlEvents: .TouchUpInside)
@@ -157,11 +156,11 @@ class JSZBrowserToolbar: UIView, UITextFieldDelegate {
     }
     
     func didTapForwardButton(sender: UIButton) {
-        delegate?.toolbarDidReceiveNavigationAction(.Forward)
+        delegate?.toolbarDidReceiveNavigationAction(sender, action: .Forward)
     }
     
     func didTapBackButton(sender: UIButton) {
-        delegate?.toolbarDidReceiveNavigationAction(.Back)
+        delegate?.toolbarDidReceiveNavigationAction(sender, action: .Back)
     }
     
     func didTapShareButton(sender: UIButton) {
@@ -179,15 +178,11 @@ class JSZBrowserToolbar: UIView, UITextFieldDelegate {
     func didTapRightButton(sender: UIButton) {
         switch navigationState {
         case .NotLoading:
-            delegate?.toolbarDidReceiveNavigationAction(.Reload)
+            delegate?.toolbarDidReceiveNavigationAction(sender, action: .Reload)
         case .Loading:
-            delegate?.toolbarDidReceiveNavigationAction(.Cancel)
+            delegate?.toolbarDidReceiveNavigationAction(sender, action: .Cancel)
         }
     }
-    
-//    func didLongPressBackButton(recognizer: UITapGestureRecognizer) {
-//        delegate?.toolbarDidReceiveNavigationAction(.BackHistory)
-//    }
     
     func didLongPressNavigationButton(recognizer: UITapGestureRecognizer) {
         var longPressItem: JSZBrowserNavigationItem?
@@ -199,14 +194,14 @@ class JSZBrowserToolbar: UIView, UITextFieldDelegate {
             }
         }
         if let item = longPressItem {
-            delegate?.toolbarDidReceiveNavigationAction(item)
+            delegate?.toolbarDidReceiveNavigationAction(recognizer.view, action: item)
         }
     }
 }
 
 protocol JSZBrowserToolbarDelegate: class {
     func toolbarDidReturnWithText(text: String?)
-    func toolbarDidReceiveNavigationAction(action: JSZBrowserNavigationItem)
+    func toolbarDidReceiveNavigationAction(sourceView: UIView!, action: JSZBrowserNavigationItem)
     func toolbarAwakeSwitchValueChanged(awakeSwitchValue: Bool)
     func toolbarDidTapShareButton(sourceView: UIView!)
 }

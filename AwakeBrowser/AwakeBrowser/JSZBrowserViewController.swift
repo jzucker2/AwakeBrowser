@@ -80,7 +80,7 @@ class JSZBrowserViewController: UIViewController, WKNavigationDelegate, JSZBrows
         }
     }
     
-    func toolbarDidReceiveNavigationAction(action: JSZBrowserNavigationItem) {
+    func toolbarDidReceiveNavigationAction(sourceView: UIView!, action: JSZBrowserNavigationItem) {
         switch action {
         case .Back:
             webView.goBack()
@@ -92,14 +92,19 @@ class JSZBrowserViewController: UIViewController, WKNavigationDelegate, JSZBrows
             webView.stopLoading()
         case .BackHistory:
             print(action.rawValue)
-//            if let backItem = webView.backForwardList.backItem {
-//                webView.goToBackForwardListItem(backItem)
-//            }
+            let popoverVC = UIViewController()
+            popoverVC.modalPresentationStyle = .Popover
+            popoverVC.popoverPresentationController?.sourceView = sourceView
+            popoverVC.popoverPresentationController?.permittedArrowDirections = .Up
+            presentViewController(popoverVC, animated: true, completion: nil)
+            //            if let backItem = webView.backForwardList.backItem {
+            //                webView.goToBackForwardListItem(backItem)
+        //            }
         case .ForwardHistory:
             print(action.rawValue)
-//            if let forwardItem = webView.backForwardList.forwardItem {
-//                webView.goToBackForwardListItem(forwardItem)
-//            }
+            //            if let forwardItem = webView.backForwardList.forwardItem {
+            //                webView.goToBackForwardListItem(forwardItem)
+            //            }
         }
     }
     
