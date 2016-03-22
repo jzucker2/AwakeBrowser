@@ -74,9 +74,10 @@ class JSZBrowserViewController: UIViewController, WKNavigationDelegate, JSZBrows
         UIApplication.sharedApplication().idleTimerDisabled = awakeSwitchValue
     }
     
-    func toolbarDidTapShareButton(urlString: String?) {
-        print("share")
-        //        let activityViewController =
+    func toolbarDidTapShareButton(sourceView: UIView!) {
+        if let currentURL = webView.URL {
+            presentViewController(JSZActivityViewController.activityViewController(currentURL, sourceView: sourceView), animated: true, completion: nil)
+        }
     }
     
     func toolbarDidReceiveNavigationAction(action: JSZBrowserNavigationItem) {

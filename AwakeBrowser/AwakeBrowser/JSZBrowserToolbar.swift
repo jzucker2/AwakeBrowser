@@ -165,7 +165,7 @@ class JSZBrowserToolbar: UIView, UITextFieldDelegate {
     }
     
     func didTapShareButton(sender: UIButton) {
-        delegate?.toolbarDidTapShareButton(inputField.text)
+        delegate?.toolbarDidTapShareButton(sender)
     }
     
     func updateTextFieldWithURL(URL: NSURL?) {
@@ -208,5 +208,5 @@ protocol JSZBrowserToolbarDelegate: class {
     func toolbarDidReturnWithText(text: String?)
     func toolbarDidReceiveNavigationAction(action: JSZBrowserNavigationItem)
     func toolbarAwakeSwitchValueChanged(awakeSwitchValue: Bool)
-    func toolbarDidTapShareButton(urlString: String?)
+    func toolbarDidTapShareButton(sourceView: UIView!)
 }

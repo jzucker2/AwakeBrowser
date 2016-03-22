@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		517924911CA12443004BC7D5 /* JSZActivityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 517924901CA12443004BC7D5 /* JSZActivityViewController.swift */; };
 		51AFED3E1C9E4BAE00AF6670 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51AFED3D1C9E4BAE00AF6670 /* AppDelegate.swift */; };
 		51AFED401C9E4BAE00AF6670 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51AFED3F1C9E4BAE00AF6670 /* ViewController.swift */; };
 		51AFED431C9E4BAE00AF6670 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 51AFED411C9E4BAE00AF6670 /* Main.storyboard */; };
@@ -19,6 +20,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		517924901CA12443004BC7D5 /* JSZActivityViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSZActivityViewController.swift; sourceTree = "<group>"; };
 		51AFED3A1C9E4BAE00AF6670 /* AwakeBrowser.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AwakeBrowser.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		51AFED3D1C9E4BAE00AF6670 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		51AFED3F1C9E4BAE00AF6670 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -65,6 +67,7 @@
 				51AFED3D1C9E4BAE00AF6670 /* AppDelegate.swift */,
 				51AFED3F1C9E4BAE00AF6670 /* ViewController.swift */,
 				51AFED4F1C9F29D500AF6670 /* JSZBrowserViewController.swift */,
+				517924901CA12443004BC7D5 /* JSZActivityViewController.swift */,
 				51AFED511C9F2A5000AF6670 /* JSZBrowserNavigationBar.swift */,
 				51AFED531C9F2A6800AF6670 /* JSZBrowserToolbar.swift */,
 				51AFED551C9F2AAA00AF6670 /* JSZWebView.swift */,
@@ -150,6 +153,7 @@
 				51AFED521C9F2A5000AF6670 /* JSZBrowserNavigationBar.swift in Sources */,
 				51AFED401C9E4BAE00AF6670 /* ViewController.swift in Sources */,
 				51AFED541C9F2A6800AF6670 /* JSZBrowserToolbar.swift in Sources */,
+				517924911CA12443004BC7D5 /* JSZActivityViewController.swift in Sources */,
 				51AFED561C9F2AAA00AF6670 /* JSZWebView.swift in Sources */,
 				51AFED3E1C9E4BAE00AF6670 /* AppDelegate.swift in Sources */,
 				51AFED501C9F29D500AF6670 /* JSZBrowserViewController.swift in Sources */,
@@ -302,6 +306,7 @@
 				51AFED4E1C9E4BAE00AF6670 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
